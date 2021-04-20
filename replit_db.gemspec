@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require_relative "lib/ruby/replitdb/version"
+require_relative "lib/replitdb/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "ruby-replitdb"
-  spec.version       = Ruby::Replitdb::VERSION
+  spec.name          = "replitdb"
+  spec.version       = ReplitDb::VERSION
   spec.authors       = ["Jan Lindblom"]
   spec.email         = ["janlindblom@fastmail.fm"]
 
