@@ -73,7 +73,7 @@ module ReplitDb
       response = Net::HTTP.get(URI("#{@database_url}?encode=true&prefix=#{CGI.escape(prefix)}"))
       return [] if response.empty?
 
-      response.split('\n').map { |l| CGI.unescape(l) }
+      response.split("\n").map { |l| CGI.unescape(l) }
     end
 
     #
@@ -93,7 +93,7 @@ module ReplitDb
     def get_all
       output = {}
       list.each do |key|
-        output[key] = get key
+        output[key.to_sym] = get key
       end
       output
     end
