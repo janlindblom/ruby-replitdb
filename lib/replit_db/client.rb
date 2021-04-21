@@ -4,7 +4,7 @@ module ReplitDb
   class Client
 
     def initialize(custom_url = nil)
-      @database_url = custom_url || = ENV['REPLIT_DB_URL']
+      @database_url = custom_url ||= ENV['REPLIT_DB_URL']
     end
 
     def get(key, options = {raw: false})
