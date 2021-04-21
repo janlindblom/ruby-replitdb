@@ -5,5 +5,5 @@ require_relative 'replit_db/client'
 
 module ReplitDb
   class Error < StandardError; end
-  # Your code goes here...
+  class SyntaxError < Error; end
 end
