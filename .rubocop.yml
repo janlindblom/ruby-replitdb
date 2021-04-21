@@ -17,5 +17,8 @@ Layout/EndOfLine:
 Naming/AccessorMethodName:
   Enabled: false
 
+Lint/ScriptPermission:
+  Enabled: false
+
 Layout/LineLength:
   Max: 120
