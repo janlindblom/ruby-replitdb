@@ -34,6 +34,7 @@ GEM
       rubocop
     ruby-progressbar (1.11.0)
     unicode-display_width (2.0.0)
+    yard (0.9.26)
 
 PLATFORMS
   x64-mingw32
@@ -44,6 +45,7 @@ DEPENDENCIES
   replitdb!
   rubocop (~> 1.7)
   rubocop-rake (~> 0.5)
+  yard (~> 0.9)
 
 BUNDLED WITH
    2.2.5

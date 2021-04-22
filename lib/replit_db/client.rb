@@ -22,7 +22,7 @@ module ReplitDb
     #
     # Gets a key.
     #
-    # @param [String] key Key.
+    # @param [String, Symbol] key Key.
     # @param [Hash] options Options Hash.
     # @option options [Boolean] :raw Makes it so that we return the raw string value. Default is false.
     #
@@ -43,12 +43,14 @@ module ReplitDb
     #
     # Sets a key.
     #
-    # @param [String] key Key.
+    # @param [String, Symbol] key Key.
     # @param [Object] value Value.
+    # @param [Hash] options Options Hash.
+    # @option options [Boolean] :raw Makes it so that we store the raw string value. Default is false.
     #
-    def set(key, value)
-      json_value = value.to_json
-      payload = "#{CGI.escape(key)}=#{CGI.escape(json_value)}"
+    def set(key, value, options = { raw: false })
+      json_value = options[:raw] ? value : value.to_json
+      payload = "#{CGI.escape(key.to_s)}=#{CGI.escape(json_value)}"
       Net::HTTP.post(URI(@database_url),
                      payload)
     end
@@ -86,7 +88,7 @@ module ReplitDb
     end
 
     #
-    # Get all key/value pairs and return as an object
+    # Get all key/value pairs and return as an object.
     #
     # @return [Hash<String, Object>] Hash with all objects in database.
     #
