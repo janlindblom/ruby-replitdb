@@ -1,0 +1,20 @@
+# frozen_string_literal: true
+
+require_relative "database/client"
+
+module Replit
+  #
+  # Replit Database module.
+  #
+  module Database
+    #
+    # Thrown if there is a syntax error.
+    #
+    class SyntaxError < StandardError; end
+
+    #
+    # Thrown if there is a configuration error.
+    #
+    class ConfigurationError < StandardError; end
+  end
+end

@@ -2,6 +2,7 @@ require: rubocop-rake
 
 AllCops:
   TargetRubyVersion: 2.5
+  NewCops: enable
 
 Style/StringLiterals:
   Enabled: true
@@ -22,3 +23,7 @@ Lint/ScriptPermission:
 
 Layout/LineLength:
   Max: 120
+
+Lint/SuppressedException:
+  Exclude:
+    - Rakefile
