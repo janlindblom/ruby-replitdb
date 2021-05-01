@@ -6,6 +6,9 @@ module Replit
   #
   # Replit Database module.
   #
+  # @author Jan Lindblom <janlindblom@fastmail.fm>
+  # @version 0.1.0
+  #
   module Database
     #
     # Thrown if there is a syntax error.
