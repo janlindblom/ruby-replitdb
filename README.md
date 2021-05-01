@@ -1,8 +1,8 @@
-# ReplitDb
+# Replit Database client
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/ruby/replitdb`. To experiment with that code, run `bin/console` for an interactive prompt.
+Replit Database client is a simple way to use Replit Database in your Ruby repls.
 
-TODO: Delete this and the text above, and describe your gem
+Based on the [Node.js Replit Database client](https://github.com/replit/database-node).
 
 ## Installation
 
@@ -12,17 +12,53 @@ Add this line to your application's Gemfile:
 gem 'replitdb'
 ```
 
-And then execute:
-
-    $ bundle install
-
-Or install it yourself as:
-
-    $ gem install replitdb
-
 ## Usage
 
-TODO: Write usage instructions here
+Require it in your code:
+
+```ruby
+require 'replit'
+client = Replit::Database::Client.new
+client.set "key", "value"
+key = client.get "key"
+puts key
+```
+
+### Library documentation
+
+#### Constructor
+
+```ruby
+Replit::Database::Client.new(custom_url)
+```
+
+Constructor takes a custom database URL as an optional argument.
+
+#### Functions
+
+```ruby
+get(key, {raw: false})
+```
+
+Gets the value of a key from the database, specifying passing the optional `raw: true` option returns the raw value stored, otherwise it will be deserialized as JSON into a Ruby object.
+
+```ruby
+set(key, value)
+```
+
+Sets the value of a key in the database.
+
+```ruby
+delete(key)
+```
+
+Deletes `key` from database.
+
+```ruby
+list(prefix="")
+```
+
+List all of the keys, or if prefix is defined all of the keys starting with `prefix`.
 
 ## Development
 

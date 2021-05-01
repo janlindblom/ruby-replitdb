@@ -1,5 +1,8 @@
+require: rubocop-rake
+
 AllCops:
-  TargetRubyVersion: 2.4
+  TargetRubyVersion: 2.5
+  NewCops: enable
 
 Style/StringLiterals:
   Enabled: true
@@ -9,5 +12,18 @@ Style/StringLiteralsInInterpolation:
   Enabled: true
   EnforcedStyle: double_quotes
 
+Layout/EndOfLine:
+  Enabled: false
+
+Naming/AccessorMethodName:
+  Enabled: false
+
+Lint/ScriptPermission:
+  Enabled: false
+
 Layout/LineLength:
   Max: 120
+
+Lint/SuppressedException:
+  Exclude:
+    - Rakefile
