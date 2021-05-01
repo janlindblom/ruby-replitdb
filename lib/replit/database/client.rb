@@ -17,8 +17,8 @@ module Replit
       # @param [String] custom_url optional custom URL
       #
       def initialize(custom_url = nil)
-        @database_url = ENV["REPLIT_DB_URL"]
-        @database_url = custom_url unless custom_url.nil?
+        @database_url = ENV["REPLIT_DB_URL"] if ENV["REPLIT_DB_URL"]
+        @database_url = custom_url if custom_url
       end
 
       #
@@ -133,13 +133,15 @@ module Replit
       private
 
       def verify_connection_url
-        throw Replit::Database::ConfigurationError "Missing database connection url" unless @database_url
+        error = Replit::Database::ConfigurationError.new "Missing database connection url"
+        raise error unless @database_url
+        raise error if @database_url.empty?
       end
 
       def json_parse(string, key)
         JSON.parse(string, { symbolize_names: true })
       rescue JSON::ParserError
-        throw Replit::Database::SyntaxError "Failed to parse value of #{
+        raise Replit::Database::SyntaxError, "Failed to parse value of #{
           key
         }, try passing a raw option to get the raw value"
       end

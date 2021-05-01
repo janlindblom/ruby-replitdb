@@ -13,11 +13,13 @@ end
 RSpec.describe Replit::Database::Client do
   context "without a defined connection URL" do
     before :all do
-      @client = Replit::Database::Client.new
+      @client = Replit::Database::Client.new("")
     end
 
-    it "will not work" do
-      expect(@client.get("dummy")).to be_nil
+    it "will raise a ConfigurationError" do
+      expect { @client.get("dummy") }.to raise_error Replit::Database::ConfigurationError
+      expect { @client.set("dummy", "value") }.to raise_error Replit::Database::ConfigurationError
+      expect { @client.delete("dummy") }.to raise_error Replit::Database::ConfigurationError
     end
   end
 end
