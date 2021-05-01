@@ -2,6 +2,8 @@
 
 Replit Database client is a simple way to use Replit Database in your Ruby repls.
 
+Based on the [Node.js Replit Database client](https://github.com/replit/database-node).
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -10,21 +12,13 @@ Add this line to your application's Gemfile:
 gem 'replitdb'
 ```
 
-And then execute:
-
-    $ bundle install
-
-Or install it yourself as:
-
-    $ gem install replitdb
-
 ## Usage
 
 Require it in your code:
 
 ```ruby
-require 'replit_db'
-client = ReplitDb::Client.new
+require 'replit'
+client = Replit::Database::Client.new
 client.set "key", "value"
 key = client.get "key"
 puts key
@@ -35,7 +29,7 @@ puts key
 #### Constructor
 
 ```ruby
-ReplitDb::Client.new(custom_url)
+Replit::Database::Client.new(custom_url)
 ```
 
 Constructor takes a custom database URL as an optional argument.
