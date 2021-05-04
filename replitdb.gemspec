@@ -20,7 +20,10 @@ Gem::Specification.new do |spec|
   spec.metadata["changelog_uri"] = "https://github.com/janlindblom/ruby-replitdb/blob/main/CHANGELOG.md"
 
   spec.files = Dir.chdir(File.expand_path(__dir__)) do
-    `git ls-files -z`.split("\x0").reject { |f| f.match(%r{\A(?:test|spec|features|.github)/}) }
+    `git ls-files -z`.split("\x0").reject { |f|
+       f.match(%r{\A(?:test|spec|features|.github|bin)/}) ||
+       f.match(%r{\A(?:.replit|Rakefile|.rubocop.yml|.gitignore|.editorconfig)})
+    }
   end
   spec.bindir        = "exe"
   spec.executables   = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
